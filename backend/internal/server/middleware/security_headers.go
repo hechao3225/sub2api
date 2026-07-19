@@ -29,7 +29,7 @@ const (
 	// AirwallexDemoCheckoutDomain 是 Airwallex 沙箱环境收银台元素和 iframe 域名。
 	AirwallexDemoCheckoutDomain = "https://checkout-demo.airwallex.com"
 	// AIMateStoreDomain is the user-facing storefront embedded in the dashboard.
-	AIMateStoreDomain = "https://uufaka.com"
+	AIMateStoreDomain = "https://pay.ldxp.cn"
 )
 
 var requiredCSPDirectiveValues = []struct {

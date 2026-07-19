@@ -36,7 +36,7 @@ import AppLayout from '@/components/layout/AppLayout.vue'
 import Icon from '@/components/icons/Icon.vue'
 
 const { t } = useI18n()
-const storeUrl = 'https://uufaka.com/shop/aimate'
+const storeUrl = 'https://pay.ldxp.cn/shop/aimate'
 </script>
 
 <style scoped>
