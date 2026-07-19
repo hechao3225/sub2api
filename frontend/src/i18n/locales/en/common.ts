@@ -153,6 +153,7 @@ export default {
     batchImage: 'Batch Images',
     usage: 'Usage',
     redeem: 'Redeem',
+    store: 'AIMate Store',
     affiliate: 'Affiliate Rebates',
     affiliateManagement: 'Affiliate Rebates',
     affiliateInviteRecords: 'Invite Records',
@@ -194,6 +195,12 @@ export default {
     contentModeration: 'Content Moderation',
     promptAudit: 'Prompt Audit',
     auditLogs: 'Audit Logs',
+  },
+
+  store: {
+    title: 'AIMate Store',
+    description: 'Purchase AIMate redemption codes and services',
+    openInNewTab: 'Open in new tab'
   },
 
   // Auth

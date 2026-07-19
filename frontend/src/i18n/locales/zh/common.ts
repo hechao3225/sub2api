@@ -153,6 +153,7 @@ export default {
     batchImage: '批量生图',
     usage: '使用记录',
     redeem: '兑换',
+    store: 'AIMate商城',
     affiliate: '邀请返利',
     affiliateManagement: '邀请返利',
     affiliateInviteRecords: '邀请记录',
@@ -194,6 +195,12 @@ export default {
     contentModeration: '内容审核',
     promptAudit: '提示词审计',
     auditLogs: '操作日志',
+  },
+
+  store: {
+    title: 'AIMate商城',
+    description: '购买 AIMate 兑换码和服务',
+    openInNewTab: '新标签页打开'
   },
 
   // Auth

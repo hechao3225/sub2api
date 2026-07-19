@@ -243,6 +243,18 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
+    path: '/store',
+    name: 'AIMateStore',
+    component: () => import('@/views/user/StoreView.vue'),
+    meta: {
+      requiresAuth: true,
+      requiresAdmin: false,
+      title: 'AIMate Store',
+      titleKey: 'store.title',
+      descriptionKey: 'store.description'
+    }
+  },
+  {
     path: '/affiliate',
     name: 'Affiliate',
     component: () => import('@/views/user/AffiliateView.vue'),
