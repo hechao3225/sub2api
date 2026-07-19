@@ -1,0 +1,37 @@
+# Builds the Go server with an already-generated backend/internal/web/dist.
+# This keeps the memory-heavy frontend build off the production server.
+ARG GOLANG_IMAGE=golang:1.26.5-alpine
+ARG BASE_IMAGE=weishaw/sub2api:0.1.161
+
+FROM ${GOLANG_IMAGE} AS builder
+
+ARG VERSION=0.1.161-aimate.1
+ARG COMMIT=custom
+ARG GOPROXY=https://goproxy.cn,direct
+ARG GOSUMDB=sum.golang.google.cn
+
+ENV GOPROXY=${GOPROXY}
+ENV GOSUMDB=${GOSUMDB}
+
+RUN apk add --no-cache git ca-certificates tzdata
+
+WORKDIR /src
+COPY backend/go.mod backend/go.sum ./
+RUN --mount=type=cache,id=aimate-gomod,target=/go/pkg/mod go mod download
+
+COPY backend/ ./
+RUN --mount=type=cache,id=aimate-gomod,target=/go/pkg/mod \
+    --mount=type=cache,id=aimate-gobuild,target=/root/.cache/go-build \
+    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
+    -tags embed \
+    -ldflags="-s -w -X main.Version=${VERSION} -X main.Commit=${COMMIT} -X main.BuildType=release" \
+    -trimpath \
+    -o /out/sub2api \
+    ./cmd/server
+
+FROM ${BASE_IMAGE}
+
+LABEL maintainer="AIMate"
+LABEL description="AIMate - AI API Gateway Platform"
+
+COPY --from=builder --chown=1000:1000 /out/sub2api /app/sub2api
